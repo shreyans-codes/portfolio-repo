@@ -8,12 +8,14 @@ import {
 } from "@nextui-org/react";
 import React from "react";
 import IconArrowRight from "./../icons/IconArrowRight";
+import { useNavigate } from "react-router-dom";
 
 const CommonWorkSection = () => {
+  const navigate = useNavigate();
   const workDetails = [
     {
       name: "Stock Scrapper",
-      link: "https://github.com/shreyans-codes/stockscrapper",
+      outLink: "https://github.com/shreyans-codes/stockscrapper",
       language: "Python",
       link: "https://bsmedia.business-standard.com/_media/bs/img/misc/2023-03/21/full/market-stocks-stock-market-trading-stock-market-1679390474-25992620.jpg?im=FeatureCrop,size=(826,465)",
       type: "Backend",
@@ -45,7 +47,7 @@ const CommonWorkSection = () => {
                       color="primary"
                       variant="flat"
                       onPress={() => {
-                        navigate(item.link);
+                        window.open(item.outLink, "_blank");
                       }}
                     >
                       <IconArrowRight />

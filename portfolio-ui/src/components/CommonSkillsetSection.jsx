@@ -48,7 +48,7 @@ const CommonSkillsetSection = () => {
     },
   ];
   return (
-    <div>
+    <div className="p-4">
       {/* Row 1: Heading */}
       <section className="w-full flex flex-wrap justify-between items-center">
         <article className="common-prose">
@@ -59,7 +59,7 @@ const CommonSkillsetSection = () => {
         </Button> */}
       </section>
       {/* Row 2: All Skill Cards */}
-      <section className="grid grid-cols-6 gap-2">
+      <section className="grid grid-cols-3 sm:grid-cols-6 gap-2">
         {skills.map((skill, index) => {
           return (
             <Card

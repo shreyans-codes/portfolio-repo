@@ -19,13 +19,19 @@ const CommonWorkSection = () => {
     },
   ];
   return (
-    <div>
+    <div className="p-4">
       {/* Row 1: Heading */}
       <section className="w-full flex flex-wrap justify-between items-center">
         <article className="common-prose">
           <h3>My Work</h3>
         </article>
-        <Button color="primary" variant="flat">
+        <Button
+          color="primary"
+          variant="flat"
+          onPress={() => {
+            window.open("https://github.com/shreyans-codes", "_blank");
+          }}
+        >
           See All
         </Button>
       </section>

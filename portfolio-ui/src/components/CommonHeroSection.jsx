@@ -23,7 +23,7 @@ const CommonHeroSection = () => {
       </div>
       {/* Column 2: Image */}
       <div className="flex justify-center items-center p-4">
-        <Image src="/src/assets/Shreyans.jpg" width={400} />
+        <Image src="/assets/Shreyans.jpg" width={400} />
       </div>
     </div>
   );

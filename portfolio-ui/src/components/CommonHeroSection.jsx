@@ -17,7 +17,14 @@ const CommonHeroSection = () => {
           and much more (and counting)
           <br />
         </p>
-        <Button color="primary" variant="flat">
+        <Button
+          color="primary"
+          variant="flat"
+          onPress={(e) => {
+            window.location.href = "mailto:shreyanssethia21@gmail.com";
+            e.preventDefault();
+          }}
+        >
           Get in contact
         </Button>
       </div>

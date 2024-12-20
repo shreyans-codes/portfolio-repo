@@ -6,12 +6,9 @@ import {
   Image,
   Tooltip,
 } from "@nextui-org/react";
-import React from "react";
 import IconArrowRight from "./../icons/IconArrowRight";
-import { useNavigate } from "react-router-dom";
 
 const CommonWorkSection = () => {
-  const navigate = useNavigate();
   const workDetails = [
     {
       name: "Stock Scrapper",
@@ -57,13 +54,13 @@ const CommonWorkSection = () => {
                 <small className="text-default-500">{item.language}</small>
                 <h4 className="font-bold text-large">{item.name}</h4>
               </CardHeader>
-              <CardBody className="overflow-visible py-2 items-center">
+              <CardBody className="overflow-visible items-center">
                 <Image
                   alt="Card background"
                   className="object-contain sm:object-fill rounded-xl"
                   src={item.link}
                   width={"100%"}
-                  height={100}
+                  // height={100}
                   isZoomed
                 />
               </CardBody>

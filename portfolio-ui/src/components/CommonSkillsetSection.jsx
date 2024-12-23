@@ -1,4 +1,5 @@
 import {
+  Button,
   Card,
   CardFooter,
   Chip,
@@ -9,11 +10,14 @@ import {
   ModalHeader,
 } from "@nextui-org/react";
 import { useState } from "react";
+import { projects } from "../variables/projects";
+import IconArrowRight from "../icons/IconArrowRight";
 
 const CommonSkillsetSection = () => {
   const [skilsModal, setSkilsModal] = useState(-1);
   const skills = [
     {
+      id: "react",
       icon: "/icons/react.png",
       name: "React JS",
       description:
@@ -21,6 +25,7 @@ const CommonSkillsetSection = () => {
       tags: ["Frontend", "Library", "Framework"],
     },
     {
+      id: "spring",
       icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi0.wp.com%2Findiciatraining.com%2Fwp-content%2Fuploads%2F2020%2F05%2Fspring-boot-logo.png%3Ffit%3D856%252C768%26ssl%3D1&f=1&nofb=1&ipt=bc2169b625e017a172492a0e379a13b2eadb2e7d534de423866803d0a5054623&ipo=images",
       name: "Spring Boot",
       description:
@@ -28,6 +33,7 @@ const CommonSkillsetSection = () => {
       tags: ["Backend", "Framework"],
     },
     {
+      id: "mysql",
       icon: "/icons/mysql.png",
       name: "MySQL",
       description:
@@ -35,6 +41,7 @@ const CommonSkillsetSection = () => {
       tags: ["Database"],
     },
     {
+      id: "docker",
       icon: "/icons/docker.png",
       name: "Docker",
       description:
@@ -42,6 +49,7 @@ const CommonSkillsetSection = () => {
       tags: ["DevOps", "Cloud"],
     },
     {
+      id: "python",
       icon: "/icons/python.png",
       name: "Python",
       description:
@@ -49,6 +57,7 @@ const CommonSkillsetSection = () => {
       tags: ["Backend", "Library"],
     },
     {
+      id: "flutter",
       icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.wedigtech.com%2Fimg%2Fflutter-logo.png&f=1&nofb=1&ipt=ecba167a9355fdab5e4e8dd8f138dd523e5eb1d487726a48ea55c70984aff73f&ipo=images",
       name: "Flutter",
       description:
@@ -56,6 +65,7 @@ const CommonSkillsetSection = () => {
       tags: ["Frontend", "Framework"],
     },
     {
+      id: "redux",
       icon: "/icons/redux.png",
       name: "Redux",
       description:
@@ -63,6 +73,7 @@ const CommonSkillsetSection = () => {
       tags: ["Frontend", "Library"],
     },
     {
+      id: "git",
       icon: "/icons/git.png",
       name: "Git",
       description:
@@ -70,6 +81,7 @@ const CommonSkillsetSection = () => {
       tags: ["DevOps"],
     },
     {
+      id: "jenkins",
       icon: "/icons/jenkins.png",
       name: "Jenkins",
       description:
@@ -77,6 +89,7 @@ const CommonSkillsetSection = () => {
       tags: ["CI CD", "DevOps"],
     },
     {
+      id: "aws",
       icon: "/icons/aws.png",
       name: "AWS",
       description:
@@ -84,6 +97,7 @@ const CommonSkillsetSection = () => {
       tags: ["Cloud", "DevOps"],
     },
     {
+      id: "gcp",
       icon: "/icons/gcp.png",
       name: "Google Cloud Platform",
       description:
@@ -106,6 +120,9 @@ const CommonSkillsetSection = () => {
       {/* Row 2: All Skill Cards */}
       <section className="grid grid-cols-3 sm:grid-cols-6 gap-2">
         {skills.map((skill, index) => {
+          const projectList = projects.filter((project) =>
+            project.tech.includes(skill.id)
+          );
           return (
             <div key={index}>
               <Card
@@ -141,14 +158,45 @@ const CommonSkillsetSection = () => {
                 <ModalContent>
                   <ModalHeader>{skill.name}</ModalHeader>
                   <ModalBody>
-                    <div className="flex flex-wrap gap-2">
-                      {skill.tags.map((tag) => (
-                        <Chip key={tag} color="primary" variant="flat">
-                          {tag}
-                        </Chip>
-                      ))}
-                    </div>
-                    {skill.description}
+                    <section>
+                      <div className="flex flex-wrap gap-2">
+                        {skill.tags.map((tag) => (
+                          <Chip key={tag} color="primary" variant="flat">
+                            {tag}
+                          </Chip>
+                        ))}
+                      </div>
+                      {skill.description}
+                      {projectList.length > 0 ? (
+                        <div className="common-prose">
+                          <h4 className="my-2">Projects</h4>
+                          {projectList.map((project) => {
+                            return (
+                              <div
+                                key={project.name}
+                                className="flex justify-between py-2"
+                                // onClick={() => {
+                                //   window.open(project.outLink, "_blank");
+                                // }}
+                              >
+                                {project.name}
+                                <Button
+                                  size="sm"
+                                  isIconOnly
+                                  color="primary"
+                                  variant="flat"
+                                  onPress={() => {
+                                    window.open(project.outLink, "_blank");
+                                  }}
+                                >
+                                  <IconArrowRight />
+                                </Button>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      ) : null}
+                    </section>
                   </ModalBody>
                 </ModalContent>
               </Modal>

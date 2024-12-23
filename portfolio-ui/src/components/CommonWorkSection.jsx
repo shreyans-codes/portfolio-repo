@@ -7,17 +7,9 @@ import {
   Tooltip,
 } from "@nextui-org/react";
 import IconArrowRight from "./../icons/IconArrowRight";
+import { projects } from "../variables/projects";
 
 const CommonWorkSection = () => {
-  const workDetails = [
-    {
-      name: "Stock Scrapper",
-      outLink: "https://github.com/shreyans-codes/stockscrapper",
-      language: "Python",
-      link: "https://bsmedia.business-standard.com/_media/bs/img/misc/2023-03/21/full/market-stocks-stock-market-trading-stock-market-1679390474-25992620.jpg?im=FeatureCrop,size=(826,465)",
-      type: "Backend",
-    },
-  ];
   return (
     <div className="p-4">
       {/* Row 1: Heading */}
@@ -37,7 +29,7 @@ const CommonWorkSection = () => {
       </section>
       {/* Row 2: All Work Cards */}
       <section className="grid grid-cols-2">
-        {workDetails.map((item, index) => {
+        {projects.map((item, index) => {
           return (
             <Card key={index} className="py-4 w-full bg-white" isBlurred>
               <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
@@ -66,7 +58,7 @@ const CommonWorkSection = () => {
                   className="object-contain sm:object-fill rounded-xl"
                   src={item.link}
                   width={"100%"}
-                  // height={100}
+                  height={200}
                   isZoomed
                 />
               </CardBody>

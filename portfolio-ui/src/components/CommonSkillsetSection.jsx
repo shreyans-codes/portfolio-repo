@@ -1,52 +1,97 @@
-import { Card, CardFooter, Image } from "@nextui-org/react";
+import {
+  Card,
+  CardFooter,
+  Chip,
+  Image,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalHeader,
+} from "@nextui-org/react";
+import { useState } from "react";
 
 const CommonSkillsetSection = () => {
+  const [skilsModal, setSkilsModal] = useState(-1);
   const skills = [
     {
       icon: "/icons/react.png",
       name: "React JS",
+      description:
+        "A JavaScript library for building user interfaces. It helps create dynamic, fast, and responsive front-end web applications by efficiently updating the DOM based on state changes.",
+      tags: ["Frontend", "Library", "Framework"],
     },
     {
       icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi0.wp.com%2Findiciatraining.com%2Fwp-content%2Fuploads%2F2020%2F05%2Fspring-boot-logo.png%3Ffit%3D856%252C768%26ssl%3D1&f=1&nofb=1&ipt=bc2169b625e017a172492a0e379a13b2eadb2e7d534de423866803d0a5054623&ipo=images",
       name: "Spring Boot",
+      description:
+        "A Java-based framework that simplifies the development of production-ready applications. It streamlines setup and configuration, reducing boilerplate code, and solves the common problem of building enterprise-scale applications quickly.",
+      tags: ["Backend", "Framework"],
     },
     {
       icon: "/icons/mysql.png",
       name: "MySQL",
+      description:
+        "An open-source relational database management system. It provides a structured way to store, retrieve, and manage data, solving the problem of efficiently querying large datasets and maintaining data integrity.",
+      tags: ["Database"],
     },
     {
       icon: "/icons/docker.png",
       name: "Docker",
+      description:
+        "A platform for developing, shipping, and running applications in containers. It solves the problem of environment consistency, ensuring apps work seamlessly across different machines and environments.",
+      tags: ["DevOps", "Cloud"],
     },
     {
       icon: "/icons/python.png",
       name: "Python",
+      description:
+        "A high-level programming language known for its readability and versatility. It is widely used in web development, data analysis, machine learning, and automation, solving the problem of rapid development and ease of integration.",
+      tags: ["Backend", "Library"],
     },
     {
       icon: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.wedigtech.com%2Fimg%2Fflutter-logo.png&f=1&nofb=1&ipt=ecba167a9355fdab5e4e8dd8f138dd523e5eb1d487726a48ea55c70984aff73f&ipo=images",
       name: "Flutter",
+      description:
+        "A UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase. It solves the problem of having to write separate code for different platforms.",
+      tags: ["Frontend", "Framework"],
     },
     {
       icon: "/icons/redux.png",
       name: "Redux",
+      description:
+        "A state management library for JavaScript apps, often used with React. It helps manage the state of an application in a predictable way, solving the problem of inconsistent state across different components.",
+      tags: ["Frontend", "Library"],
     },
     {
       icon: "/icons/git.png",
       name: "Git",
+      description:
+        "A distributed version control system that allows multiple developers to collaborate on code. It solves the problem of tracking changes, managing code versions, and resolving conflicts in large teams.",
+      tags: ["DevOps"],
     },
     {
       icon: "/icons/jenkins.png",
       name: "Jenkins",
+      description:
+        "An open-source automation server that helps automate various aspects of software development, including building, testing, and deploying. It solves the problem of continuous integration and delivery, making software development more efficient.",
+      tags: ["CI CD", "DevOps"],
     },
     {
       icon: "/icons/aws.png",
       name: "AWS",
+      description:
+        "Amazon Web Services is a cloud platform offering a wide range of services, including compute, storage, and networking. It solves the problem of managing infrastructure at scale and provides flexible, pay-as-you-go pricing.",
+      tags: ["Cloud", "DevOps"],
     },
     {
       icon: "/icons/gcp.png",
       name: "Google Cloud Platform",
+      description:
+        "Google Cloud offers a suite of cloud computing services, including computing, data storage, machine learning, and analytics. It solves the problem of scalable infrastructure and advanced analytics tools for businesses.",
+      tags: ["Cloud", "DevOps"],
     },
   ];
+
   return (
     <div className="p-4">
       {/* Row 1: Heading */}
@@ -62,26 +107,52 @@ const CommonSkillsetSection = () => {
       <section className="grid grid-cols-3 sm:grid-cols-6 gap-2">
         {skills.map((skill, index) => {
           return (
-            <Card
-              key={index}
-              isFooterBlurred
-              className="border-none"
-              radius="lg"
-            >
-              <Image
-                alt="React"
-                className="object-contain"
-                height={150}
-                src={skill.icon}
-                width={200}
-                isZoomed
-              />
-              <CardFooter className="justify-center before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-                <p className="text-tiny dark:text-white/80 text-gray-800">
-                  {skill.name}
-                </p>
-              </CardFooter>
-            </Card>
+            <div key={index}>
+              <Card
+                isFooterBlurred
+                className="border-none"
+                radius="lg"
+                isPressable
+                onPress={() => setSkilsModal(index)}
+              >
+                <Image
+                  alt="React"
+                  className="object-contain"
+                  height={150}
+                  src={skill.icon}
+                  width={200}
+                  isZoomed
+                />
+                <CardFooter className="justify-center before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+                  <p className="text-tiny dark:text-white/80 text-gray-800">
+                    {skill.name}
+                  </p>
+                </CardFooter>
+              </Card>
+              <Modal
+                isOpen={skilsModal === index}
+                onOpenChange={() =>
+                  skilsModal === index
+                    ? setSkilsModal(-1)
+                    : setSkilsModal(index)
+                }
+                scrollBehavior="inside"
+              >
+                <ModalContent>
+                  <ModalHeader>{skill.name}</ModalHeader>
+                  <ModalBody>
+                    <div className="flex flex-wrap gap-2">
+                      {skill.tags.map((tag) => (
+                        <Chip key={tag} color="primary" variant="flat">
+                          {tag}
+                        </Chip>
+                      ))}
+                    </div>
+                    {skill.description}
+                  </ModalBody>
+                </ModalContent>
+              </Modal>
+            </div>
           );
         })}
       </section>

@@ -28,7 +28,7 @@ const CommonWorkSection = () => {
         </Button>
       </section>
       {/* Row 2: All Work Cards */}
-      <section className="grid grid-cols-2">
+      <section className="grid grid-cols-2 gap-2">
         {projects.map((item, index) => {
           return (
             <Card key={index} className="py-4 w-full bg-white" isBlurred>
@@ -55,9 +55,9 @@ const CommonWorkSection = () => {
               <CardBody className="overflow-visible items-center">
                 <Image
                   alt="Card background"
-                  className="object-contain sm:object-fill rounded-xl"
+                  className="object-cover sm:object-fill rounded-xl w-full"
                   src={item.link}
-                  width={"100%"}
+                  // width={200}
                   height={200}
                   isZoomed
                 />

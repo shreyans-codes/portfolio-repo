@@ -39,9 +39,9 @@ const CommonNavbar = () => {
     },
     {
       id: navbarItemIds.project,
-      name: "Work",
-      href: "/work",
-      type: "link",
+      name: "Blog",
+      href: "https://blog.shreyanssethia.in",
+      type: "out-link",
     },
     {
       id: navbarItemIds.contact,
@@ -99,11 +99,17 @@ const CommonNavbar = () => {
                 currentPage == navbarItemIds.home ? "primary" : "foreground"
               }
               isActive={currentPage == navbarItemIds.home}
-              onPress={() =>
-                navigate(
-                  menuItems.find((item) => item.id === navbarItemIds.home)?.href
-                )
-              }
+              onPress={() => {
+                const item = menuItems.find(
+                  (item) => item.id === navbarItemIds.home
+                );
+                if (item.type === "out-link") {
+                  window.open(item.href, "_self");
+                  // e.preventDefault();
+                } else {
+                  navigate(item.href);
+                }
+              }}
             >
               {menuItems.find((item) => item.id === navbarItemIds.home)?.name}
             </Button>
@@ -115,12 +121,17 @@ const CommonNavbar = () => {
                 currentPage == navbarItemIds.project ? "primary" : "foreground"
               }
               isActive={currentPage == navbarItemIds.project}
-              onPress={() =>
-                navigate(
-                  menuItems.find((item) => item.id === navbarItemIds.project)
-                    ?.href
-                )
-              }
+              onPress={() => {
+                const item = menuItems.find(
+                  (item) => item.id === navbarItemIds.project
+                );
+                if (item.type === "out-link") {
+                  window.open(item.href, "_self");
+                  // e.preventDefault();
+                } else {
+                  navigate(item.href);
+                }
+              }}
             >
               {
                 menuItems.find((item) => item.id === navbarItemIds.project)

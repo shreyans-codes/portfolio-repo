@@ -107,7 +107,7 @@ const CommonSkillsetSection = () => {
   ];
 
   return (
-    <div className="p-4">
+    <div id="sage-skills" className="p-4">
       {/* Row 1: Heading */}
       <section className="w-full flex flex-wrap justify-between items-center">
         <article className="common-prose">

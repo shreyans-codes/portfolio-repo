@@ -14,7 +14,7 @@ const CommonHeroSection = () => {
           <span className="text-green-700 dark:text-green-500">
             Spring Boot, MySQL, Nginx, React.js
           </span>{" "}
-          and much more (and counting)
+          and much more
           <br />
         </p>
         <Button

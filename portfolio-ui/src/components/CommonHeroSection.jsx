@@ -1,6 +1,14 @@
 import { Button, Image } from "@nextui-org/react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { changePage } from "../redux/navbarSlice";
 
 const CommonHeroSection = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(changePage("home"));
+  }, [dispatch]);
+
   return (
     <div className="w-full grid grid-cols-1 sm:grid-cols-2">
       {/* Column 1: Name Details */}
@@ -30,7 +38,12 @@ const CommonHeroSection = () => {
       </div>
       {/* Column 2: Image */}
       <div className="flex justify-center items-center p-4">
-        <Image src="/Shreyans.jpg" width={400} />
+        <Image
+          src="/Shreyans.jpg"
+          className="object-cover"
+          width={300}
+          height={300}
+        />
       </div>
     </div>
   );

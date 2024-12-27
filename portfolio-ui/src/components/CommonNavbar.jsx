@@ -189,7 +189,11 @@ const CommonNavbar = () => {
               <Link
                 className="w-full"
                 color="foreground"
-                href={item.type === "link" ? item.href : null}
+                href={
+                  item.type === "link" || item.type === "out-link"
+                    ? item.href
+                    : null
+                }
                 onPress={item.type === "button" ? item.click : null}
                 size="lg"
               >

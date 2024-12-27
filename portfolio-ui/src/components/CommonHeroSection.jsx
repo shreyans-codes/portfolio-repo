@@ -1,7 +1,15 @@
-import { Button, Image } from "@nextui-org/react";
+import {
+  Button,
+  Image,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@nextui-org/react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { changePage } from "../redux/navbarSlice";
+import { socialLinks } from "../variables/socials";
+import IconArrowRight from "../icons/IconArrowRight";
 
 const CommonHeroSection = () => {
   const dispatch = useDispatch();
@@ -25,16 +33,40 @@ const CommonHeroSection = () => {
           and much more
           <br />
         </p>
-        <Button
-          color="primary"
-          variant="flat"
-          onPress={(e) => {
-            window.location.href = "mailto:shreyanssethia21@gmail.com";
-            e.preventDefault();
-          }}
-        >
-          Get in contact
-        </Button>
+        <Popover showArrow>
+          <PopoverTrigger>
+            <Button
+              color="primary"
+              variant="flat"
+              // onPress={(e) => {
+              //   window.location.href = "mailto:shreyanssethia21@gmail.com";
+              //   e.preventDefault();
+              // }}
+            >
+              Get in contact
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-[180px]">
+            <section className="flex flex-col items-stretch w-full">
+              {socialLinks.map((current) => {
+                return (
+                  <Button
+                    key={current.name}
+                    variant="light"
+                    className="flex justify-between items-center"
+                    onPress={(e) => {
+                      window.location.href = current.href;
+                      e.preventDefault();
+                    }}
+                  >
+                    {current.name}
+                    <IconArrowRight />
+                  </Button>
+                );
+              })}
+            </section>
+          </PopoverContent>
+        </Popover>
       </div>
       {/* Column 2: Image */}
       <div className="flex justify-center items-center p-4">

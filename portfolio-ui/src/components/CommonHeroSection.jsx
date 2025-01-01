@@ -8,13 +8,14 @@ import {
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { changePage } from "../redux/navbarSlice";
-import { socialLinks } from "../variables/socials";
+import { socialLinks } from "../variables/socials.jsx";
 import IconArrowRight from "../icons/IconArrowRight";
+import { navbarItemIds } from "./CommonNavbar";
 
 const CommonHeroSection = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(changePage("home"));
+    dispatch(changePage(navbarItemIds.home));
   }, [dispatch]);
 
   return (

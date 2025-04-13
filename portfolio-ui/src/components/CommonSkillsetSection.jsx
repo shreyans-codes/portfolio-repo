@@ -41,6 +41,14 @@ const CommonSkillsetSection = () => {
       tags: ["Database"],
     },
     {
+      id: "golang",
+      icon: "/icons/go.png",
+      name: "Golang",
+      description:
+        "A statically typed, compiled programming language designed by Google. Known for its simplicity, performance, and strong concurrency support, it solves the problem of building scalable and high-performance applications, especially in systems programming and backend services.",
+      tags: ["Backend", "Language"],
+    },
+    {
       id: "docker",
       icon: "/icons/docker.png",
       name: "Docker",

@@ -5,7 +5,7 @@ export const projects = [
     language: "Python",
     link: "https://bsmedia.business-standard.com/_media/bs/img/misc/2023-03/21/full/market-stocks-stock-market-trading-stock-market-1679390474-25992620.jpg?im=FeatureCrop,size=(826,465)",
     type: "Backend",
-    tech: ["python", "mysql"],
+    tech: ["golang", "mysql"],
   },
   {
     name: "Secure Sync",

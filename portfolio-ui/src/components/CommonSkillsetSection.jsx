@@ -42,7 +42,7 @@ const CommonSkillsetSection = () => {
     },
     {
       id: "golang",
-      icon: "/icons/go.png",
+      icon: "/icons/Go.png",
       name: "Golang",
       description:
         "A statically typed, compiled programming language designed by Google. Known for its simplicity, performance, and strong concurrency support, it solves the problem of building scalable and high-performance applications, especially in systems programming and backend services.",
@@ -62,7 +62,7 @@ const CommonSkillsetSection = () => {
       name: "Python",
       description:
         "A high-level programming language known for its readability and versatility. It is widely used in web development, data analysis, machine learning, and automation, solving the problem of rapid development and ease of integration.",
-      tags: ["Backend", "Library"],
+      tags: ["Backend", "Language"],
     },
     {
       id: "flutter",
